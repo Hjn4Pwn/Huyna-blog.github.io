@@ -340,6 +340,56 @@
 <h2 id="branching-workflow"><a class="header" href="#branching-workflow">Branching workflow</a></h2>
 <p>...</p>
 <p><em>update in the future</em></p>
+<h2 id="intern"><a class="header" href="#intern">Intern</a></h2>
+<pre><code class="language-sh">git checkout  -b feature/create_login-form
+
+git add .
+git commit -m &quot;test&quot;
+
+git push
+
+git checkout develop
+# tất cả các thay đổi chưa commit trên nhánh develop trên local sẽ bị mất (vẫn ok khi mà đã push nó sang nhánh feature)
+git fetch origin
+git reset --hard origin/develop
+
+</code></pre>
+<pre><code class="language-sh"># merge
+git checkout develop
+git merge feature
+
+# xử lý conflict
+
+git add .
+git commit -m &quot;test&quot;
+
+git push
+</code></pre>
+<pre><code class="language-sh"># rename branch
+git branch -m new-branch-name
+
+
+</code></pre>
+<ul>
+<li><strong>Merge remote branch</strong></li>
+</ul>
+<pre><code class="language-sh">git fetch
+git checkout -b feature/authencation_login_signup origin/feature/authencation_login_signup 
+git checkout develop
+git merge feature/authencation_login_signup 
+
+</code></pre>
+<ul>
+<li><strong>Delete branch</strong></li>
+</ul>
+<pre><code class="language-sh"># xóa khi nó đã được merge vào branch hiện tại
+git branch -d &lt;branch_name&gt;
+# xóa luôn dù nó chưa được merge
+git branch -D &lt;branch_name&gt;
+# xóa remote branch
+git push origin --delete &lt;branch_name&gt;
+
+</code></pre>
 
                     </main>
 
